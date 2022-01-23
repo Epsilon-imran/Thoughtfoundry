@@ -1,0 +1,15 @@
+//boostrap 5
+@import "~bootstrap/scss/bootstrap";
+
+// custom variables
+@import "./variables.scss";
+
+//google fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html,
+body,
+p,
+div {
+    font-family: $font-regular;
+}
