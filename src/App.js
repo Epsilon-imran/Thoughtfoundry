@@ -1,20 +1,36 @@
-import logo from "./logo.svg";
+import { Redirect, Route, Routes } from "react-router-dom";
+
+import React, { Suspense } from "react";
+
 import "./App.scss";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import InnovationInfo from "./components/InnovationInfo";
-import HowItWorks from "./components/HowItWorks";
-import TopIdea from "./components/TopIdea";
+import Layout from "./components/UI/Layout";
+// import Homepage from "./pages/Homepage";
+
+//Pages name
+
+const Homepage = React.lazy(() => import("./pages/Homepage"));
 
 function App() {
     return (
-        <>
-            <Header />
-            <InnovationInfo />
-            <HowItWorks />
-            <TopIdea />
-            <Footer />
-        </>
+        <Layout>
+            {/* <Suspense
+                fallback={<div className="text-center">Loading.....</div>}
+            ></Suspense> */}
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Suspense
+                            fallback={
+                                <div className="text-center">Loading.....</div>
+                            }
+                        >
+                            <Homepage />
+                        </Suspense>
+                    }
+                />
+            </Routes>
+        </Layout>
     );
 }
 
