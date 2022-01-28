@@ -1,0 +1,18 @@
+.innovationLayout {
+    background: url("../assets/bg.jpg") no-repeat;
+    padding: 100px 0 0 0;
+    background-size: cover;
+    color: #fff;
+
+    [data-prefix="fas"] {
+        font-size: 100px;
+        padding: 35px;
+    }
+    p {
+        font-size: 18px;
+        margin-bottom: 5px;
+        &:last-child {
+            font-size: 14px;
+        }
+    }
+}

@@ -5,11 +5,24 @@
 @import "./variables.scss";
 
 //google fonts
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap");
 
 html,
 body,
 p,
 div {
     font-family: $font-regular;
+}
+
+body {
+    background: #f4f7f6;
+}
+
+section {
+    padding: 25px 0;
+}
+
+h2 {
+    font-size: 22px;
+    color: #5a5a5a;
 }

@@ -1,0 +1,25 @@
+.header {
+    .nav-link {
+        color: #fff;
+        font-size: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    [data-prefix="fas"] {
+        margin-right: 5px;
+    }
+    .dropdown-toggle.nav-link {
+        display: flex;
+        align-items: center;
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    }
+    .dropdown-menu[data-bs-popper] {
+        right: 0;
+        left: auto;
+    }
+}

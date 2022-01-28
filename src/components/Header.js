@@ -1,45 +1,69 @@
-import React from "react";
-import classes from "./Header.module.scss";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import "./Header.scss";
+import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import profilePic from "../assets/user.png";
+import { Animated } from "react-animated-css";
 
 const Header = () => {
+    const [scroll, setScroll] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY > 50);
+        });
+    }, [scroll]);
+
+    const Test = () => {
+        return (
+            <div className="d-inline-flex align-items-center">
+                <img src={profilePic} className="avatar" />
+                <span className="ml-2 d-none d-lg-block">
+                    <span className="user_name">Jane Doe</span>
+                </span>
+            </div>
+        );
+    };
+
     return (
-        <header>
-            {/* // ToDo:
-            1. Make the navigation transparent only in home page. In other page on scroll how the background show similar way it should be there in other pages.
-            2. scroll down there should be background added.
-            3. Should have the login and logout option.
-            4. its should responsive.
-            5. For animation effect and scroll background change refere 
-            https://preview.themeforest.net/item/olympus-responsive-community-social-network-wordpress-theme/full_screen_preview/22788499?_ga=2.219493082.2130922415.1642943514-351465467.1642943514
-            */}
-            <Navbar bg="light" expand="lg">
-                <Container>
+        <header className="header">
+            <Navbar
+                expand="lg"
+                fixed="top"
+                variant=""
+                className={scroll ? "bg-black" : ""}
+            >
+                <Container fluid>
                     <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown
-                                title="Dropdown"
-                                id="basic-nav-dropdown"
+                        <Nav className="ms-auto">
+                            <Nav.Link href="#home">
+                                <FontAwesomeIcon icon={faHouse} /> Home
+                            </Nav.Link>
+                            <Nav.Link href="#home">
+                                <FontAwesomeIcon icon={faLightbulb} />
+                                Ideas
+                            </Nav.Link>
+                        </Nav>
+                        <Button variant="outline-warning" size="sm">
+                            Submit your idea
+                        </Button>
+                        <NavDropdown title={<Test />} id="basic-nav-dropdown">
+                            <Animated
+                                animationIn="flipInX"
+                                animationOut="flipOutX"
+                                isVisible={true}
                             >
                                 <NavDropdown.Item href="#action/3.1">
-                                    Action
+                                    My page
                                 </NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">
-                                    Another action
+                                    Logout
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">
-                                    Something
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Separated link
-                                </NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
+                            </Animated>
+                        </NavDropdown>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
